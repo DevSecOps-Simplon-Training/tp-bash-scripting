@@ -1,4 +1,4 @@
-name: CI
+name: CI — TP Bash
 
 on:
   push:
@@ -7,12 +7,99 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  validate:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Example step
-        run: echo "Add your build/test steps here!"
+      # ── 1. Vérifier que tous les scripts attendus sont présents ──────────
+      - name: Vérification des scripts attendus
+        run: |
+          scripts=(
+            "mon-projet/src/info.sh"
+            "mon-projet/src/check-logs.sh"
+            "mon-projet/src/analyse-niveaux.sh"
+            "mon-projet/src/rapport.sh"
+            "mon-projet/src/couleurs.sh"
+            "mon-projet/src/check-env.sh"
+            "setup.sh"
+          )
+
+          all_present=true
+          for script in "${scripts[@]}"; do
+            if [ -f "$script" ]; then
+              echo "✅ $script"
+            else
+              echo "❌ $script — manquant"
+              all_present=false
+            fi
+          done
+
+          if [ "$all_present" = false ]; then
+            echo ""
+            echo "❌ Certains scripts sont manquants. Vérifiez votre travail."
+            exit 1
+          fi
+          echo ""
+          echo "✅ Tous les scripts attendus sont présents !"
+
+      # ── 2. Analyse syntaxique avec ShellCheck ────────────────────────────
+      - name: Analyse syntaxique avec ShellCheck
+        run: |
+          sudo apt-get install -y shellcheck -qq
+          echo "=== Résultats ShellCheck ==="
+          errors=false
+          while IFS= read -r script; do
+            echo ""
+            echo "▶ $script"
+            if shellcheck "$script"; then
+              echo "  ✅ Syntaxe correcte"
+            else
+              echo "  ❌ Erreurs de syntaxe détectées"
+              errors=true
+            fi
+          done < <(find . -name "*.sh" -not -path "./.git/*" | sort)
+
+          if [ "$errors" = true ]; then
+            echo ""
+            echo "❌ Des erreurs de syntaxe ont été trouvées. Corrigez-les avant de continuer."
+            exit 1
+          fi
+
+      # ── 3. Exécution des scripts ─────────────────────────────────────────
+      - name: Exécution des scripts
+        run: |
+          mkdir -p mon-projet/logs
+          echo "=== Exécution des scripts ==="
+          errors=false
+
+          run_script() {
+            local script="$1"
+            chmod +x "$script"
+            echo ""
+            echo "▶ $script"
+            if bash "$script"; then
+              echo "  ✅ Exécution réussie"
+            else
+              echo "  ❌ Le script a retourné une erreur"
+              errors=true
+            fi
+          }
+
+          run_script "mon-projet/src/info.sh"
+          run_script "mon-projet/src/check-logs.sh"
+          run_script "mon-projet/src/analyse-niveaux.sh"
+          run_script "mon-projet/src/rapport.sh"
+          run_script "mon-projet/src/couleurs.sh"
+          run_script "mon-projet/src/check-env.sh"
+          run_script "setup.sh"
+
+          if [ "$errors" = true ]; then
+            echo ""
+            echo "❌ Un ou plusieurs scripts ont échoué à l'exécution."
+            exit 1
+          fi
+          echo ""
+          echo "✅ Tous les scripts s'exécutent sans erreur !"
