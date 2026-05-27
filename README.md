@@ -220,6 +220,53 @@ grep -n "ERROR" ressources/server.log
 
 ---
 
+## Avant d'écrire vos premiers scripts
+
+Avant de passer aux scripts, trois notions essentielles que vous allez croiser à chaque exercice :
+
+### Le shebang `#!/bin/bash`
+
+La toute première ligne d'un script Bash commence toujours par `#!/bin/bash`. On appelle ça le **shebang**.
+
+```bash
+#!/bin/bash
+# Mon premier script
+echo "Bonjour"
+```
+
+Elle indique au système quel programme doit interpréter ce fichier. Sans elle, le système ne sait pas que c'est du Bash — il peut l'ouvrir avec le mauvais interpréteur et planter.
+
+> **Règle :** tout fichier `.sh` commence par `#!/bin/bash`.
+
+---
+
+### `chmod +x` — rendre un script exécutable
+
+Quand vous créez un fichier `.sh`, il n'est pas exécutable par défaut. Avant de le lancer pour la première fois, vous devez lui donner la permission d'exécution :
+
+```bash
+chmod +x mon-script.sh
+```
+
+`chmod` modifie les permissions d'un fichier. Le `+x` signifie "ajouter le droit d'exécution" (`x` = execute).
+
+Vous n'avez besoin de le faire **qu'une seule fois** par script. Ensuite, le fichier reste exécutable.
+
+---
+
+### `./script.sh` vs `bash script.sh`
+
+Il existe deux façons de lancer un script :
+
+| Commande | Ce qui se passe |
+|----------|----------------|
+| `./mon-script.sh` | Le système exécute le fichier directement — il lit le shebang pour savoir quel interpréteur utiliser. Nécessite `chmod +x`. |
+| `bash mon-script.sh` | Vous demandez explicitement à Bash d'interpréter le fichier. Le `chmod +x` n'est pas nécessaire. |
+
+Dans ce TP, on utilise toujours `chmod +x` puis `./script.sh` — c'est la pratique standard en DevOps.
+
+---
+
 ## Étape 3 — Variables et conditions (1h)
 
 ### Concept
