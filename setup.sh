@@ -1,6 +1,6 @@
 #!/bin/bash
 # setup.sh — Prépare le projet NexaCloud en une commande
-export $(grep -v '^#' .env | xargs)
+export "$(grep -v '^#' .env | xargs)"
 echo "Port configuré : $PORT"
 
 set -e
@@ -85,7 +85,7 @@ if [ -f "$LOG" ]; then
     ok "Analyse terminée : $NB_ERR erreurs, $NB_CRIT incidents critiques"
     
     if [ "$NB_CRIT" -gt 0 ]; then
-        err "ALERTE CRITIQUE : $NB_CRIT incident(s) critique(s) détecté(s) !"
+        echo -e "${ROUGE}ALERTE CRITIQUE : $NB_CRIT incident(s) critique(s) détecté(s) !${RESET}"
         echo "Détails des incidents critiques :"
         grep "CRITICAL" "$LOG" | while read -r line; do
             echo -e "${ROUGE}$line${RESET}"
