@@ -125,3 +125,5 @@ echo "ENV=development" >> .env
 # (grep ignore les lignes commentées, xargs les exporte)
 export "$(grep -v '^#' .env | xargs)"
 echo "Port configuré : $PORT"
+
+exit 0
