@@ -1,10 +1,12 @@
 #!/bin/bash
+# shellcheck disable=SC2129
 # rapport.sh — Génère un rapport complet avec des fonctions
 
 LOG_FILE="${1:-ressources/server.log}"
 RAPPORT="mon-projet/logs/rapport-$(date +%Y%m%d-%H%M%S).txt"
 
 # ── Fonctions ──────────────────────────────────────────────────────
+
 
 afficher_titre() {
     echo "==========================================="
