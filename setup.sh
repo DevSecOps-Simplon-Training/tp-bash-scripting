@@ -74,7 +74,7 @@ if [ -f "$LOG" ]; then
         echo ""
         echo -e "${ROUGE}ATTENTION IL Y A $NB_CRIT ERREURS CRITIQUES${RESET}"
     fi
-    while [ "${i=0}" -le "$NB_CRIT" ]; do
+    while [ "${i=1}" -le "$NB_CRIT" ]; do
         grep "CRITICAL" "$LOG" | sed -n "$i"p
         i=$((i + 1))
     done
