@@ -79,7 +79,8 @@ if [ -f "$LOG" ]; then
         err "ATTENTION : $NB_CRIT lignes CRITICAL détectées dans le fichier de log !"
         
         # Ce bloc ci-dessous listera les lignes s'il y en a
-        grep "CRITICAL" "$LOG" | while read -r ligne; do
+        # shellcheck disable=SC2317
+grep "CRITICAL" "$LOG" | while read -r ligne; do
             echo -e "${ROUGE}  -> $ligne${RESET}"
         done
     fi
