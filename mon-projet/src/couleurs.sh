@@ -3,6 +3,7 @@
 
 # Les codes couleur sont fournis
 VERT="\033[0;32m"
+# shellcheck disable=SC2034
 ROUGE="\033[0;31m"
 JAUNE="\033[0;33m"
 CYAN="\033[0;36m"
