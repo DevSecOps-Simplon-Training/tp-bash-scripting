@@ -23,5 +23,5 @@ info() { echo -e "${CYAN}[INFO]${RESET} $1"; }
 # Test — ces lignes doivent afficher chacune dans la bonne couleur
 ok   "Installation réussie"
 info "Démarrage du serveur..."
-warn "Mémoire basse : 78%"
-err  "Connexion échouée"
+echo warn "Mémoire basse : 78%"
+echo err  "Connexion échouée"

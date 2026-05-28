@@ -97,3 +97,5 @@ echo ""
 echo "  Lancer l'API Python : cd python-api && python3 app.py"
 echo "  Lancer le client Node : cd node-client && node app.js"
 echo ""
+
+exit 0
