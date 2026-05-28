@@ -6,10 +6,10 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-LOG_FILE="$1"
+LOG_FILE="${1:-ressources/server.log}"
 SEUIL_ERREURS=3
 
-[ -f "$LOG_FILE" ] && echo "Fichier trouvé" || echo "Fichier absent"
+# [ -f "$LOG_FILE" ] && echo "Fichier trouvé" || echo "Fichier absent"
 
 if [ ! -f "$LOG_FILE" ]; then
     echo "ERREUR : le fichier $LOG_FILE n'existe pas."
