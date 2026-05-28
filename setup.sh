@@ -3,9 +3,10 @@
 
 set -e
 
-set -a
-source .env
-set +a
+while IFS='=' read -r key value; do
+    [[ "$key" =~ ^#.*$ || -z "$key" ]] && continue
+    export "$key=$value"
+done < .env
 
 VERT="\033[0;32m"
 ROUGE="\033[0;31m"
