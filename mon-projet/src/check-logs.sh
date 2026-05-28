@@ -1,7 +1,7 @@
 #!/bin/bash
 # check-logs.sh — Vérifie l'état des logs et alerte si nécessaire
 
-LOG_FILE="$1"
+LOG_FILE="${1:-ressources/server.log}"
 SEUIL_ERREURS=3
 
 # Vérifier que l'argument est bien fourni
