@@ -24,7 +24,11 @@ echo -e "${BOLD}${CYAN}   SETUP NEXACLOUD — $(date '+%d/%m/%Y %H:%M')${RESET}"
 echo -e "${BOLD}${CYAN}============================================${RESET}"
 echo ""
 
-export "$(grep -v '^#' .env | xargs)"
+if [ -f .env ]; then
+    export "$(grep -v '^#' .env | xargs)"
+else
+    PORT=5001
+fi
 
 echo "Port configuré : $PORT"
 echo ""
