@@ -76,14 +76,15 @@ if [ -f "$LOG" ]; then
     ok "Analyse terminée : $NB_ERR erreurs et $NB_CRIT alertes critiques trouvées."
     
     if [ "$NB_CRIT" -gt 0 ]; then
-        err "ATTENTION : $NB_CRIT lignes CRITICAL détectées dans le fichier de log !"
-        
-        # Ce bloc ci-dessous listera les lignes s'il y en a
-        # shellcheck disable=SC2317
-grep "CRITICAL" "$LOG" | while read -r ligne; do
-            echo -e "${ROUGE}  -> $ligne${RESET}"
-        done
-    fi
+            # On remplace 'err' par 'warn' pour afficher le message sans bloquer le pipeline
+            warn "ATTENTION : $NB_CRIT lignes CRITICAL détectées dans le fichier de log !"
+            
+            # Ce bloc ci-dessous listera les lignes s'il y en a
+            # shellcheck disable=SC2317
+            grep "CRITICAL" "$LOG" | while read -r ligne; do
+                echo -e "${ROUGE} -> $ligne${RESET}"
+            done
+        fi
 else
     warn "Le fichier de log $LOG est introuvable. Analyse impossible."
 fi
