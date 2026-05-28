@@ -21,9 +21,11 @@ compter_niveau() {
 ecrire_section() {
     local titre="$1"
     local contenu="$2"
-    echo "" >> "$RAPPORT"
-    echo "--- $titre ---" >> "$RAPPORT"
-    echo "$contenu" >> "$RAPPORT"
+    {
+        echo ""
+        echo "--- $titre ---"
+        echo "$contenu"
+    } >>"$RAPPORT"
 }
 
 # ── Script principal ───────────────────────────────────────────────
@@ -46,7 +48,7 @@ echo "  ERROR    : $ERROR"
 echo "  CRITICAL : $CRITICAL"
 
 # Écrire le rapport dans un fichier
-echo "RAPPORT D'ANALYSE — $(date '+%d/%m/%Y %H:%M')" > "$RAPPORT"
+echo "RAPPORT D'ANALYSE — $(date '+%d/%m/%Y %H:%M')" >"$RAPPORT"
 ecrire_section "Compteurs" "INFO=$INFO  WARNING=$WARNING  ERROR=$ERROR  CRITICAL=$CRITICAL"
 ecrire_section "Incidents critiques" "$(grep 'CRITICAL' "$LOG_FILE")"
 ecrire_section "Erreurs" "$(grep 'ERROR' "$LOG_FILE")"
@@ -65,7 +67,7 @@ done
 
 # Boucle avec break et continue
 for i in $(seq 1 10); do
-    [ $i -eq 5 ] && continue   # sauter le 5
-    [ $i -eq 8 ] && break      # arrêter au 8
-    echo $i
+    [ "$i" -eq 5 ] && continue # sauter le 5
+    [ "$i" -eq 8 ] && break    # arrêter au 8
+    echo "$i"
 done
