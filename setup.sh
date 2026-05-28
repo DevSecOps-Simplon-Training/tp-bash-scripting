@@ -23,7 +23,7 @@ echo -e "${BOLD}${CYAN}============================================${RESET}"
 echo ""
 
 # Chargement des variables du .env
-export $(grep -v '^#' .env | xargs)
+export $("grep -v '^#' .env | xargs")
 
 # ── 1. Vérification des prérequis ─────────────────────────────────────
 info "Vérification des prérequis..."
@@ -36,7 +36,7 @@ info "Vérification des prérequis..."
 # Cette fonction vérifie si une commande est installée
 # Stoppe le script si elle ne l'est pas
 verifier_commande() {
-    for cmd in $@; do
+    for cmd in "$@"; do
       if ! command -v "$cmd" &>/dev/null; then
           err "Prérequis : $cmd manquant"
       fi
@@ -94,14 +94,14 @@ if [ ! -f "$LOG" ]; then
     err "Fichier $LOG manquant"
 fi
 
-NB_ERR=$(grep -c "ERROR" $LOG) 
-NB_CRIT=$(grep -c "CRITICAL" $LOG)
+NB_ERR=$(grep -c "ERROR" "$LOG") 
+NB_CRIT=$(grep -c "CRITICAL" "$LOG")
 
 ok "$NB_ERR errors, $NB_CRIT criticals"
 
-if [ $NB_CRIT -gt 0 ]; then
+if [ "$NB_CRIT" -gt 0 ]; then
     echo -e "${ROUGE}!!! $NB_CRIT ERREURS CRITIQUES !!! ${RESET}"
-    grep "CRITICAL" $LOG | while read -r error; do echo $error; done
+    grep "CRITICAL" "$LOG" | while read -r error; do echo "$error"; done
 fi
 
 # ── 5. Message de fin (fourni) ────────────────────────────────────────
