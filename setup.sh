@@ -3,7 +3,9 @@
 
 set -e
 
-export $(grep -v '^#' .env | xargs)
+set -a
+source .env
+set +a
 
 VERT="\033[0;32m"
 ROUGE="\033[0;31m"
