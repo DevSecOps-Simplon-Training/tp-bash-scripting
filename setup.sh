@@ -3,8 +3,7 @@
 
 set -e
 
-export $(grep -v '^#' .env | xargs)
-
+export "$(grep -v '^#' .env | xargs)"
 
 VERT="\033[0;32m"
 ROUGE="\033[0;31m"
@@ -71,9 +70,12 @@ if [ -f "$LOG" ]; then
     NB_ERR=$(grep -c "ERROR" "$LOG")
     NB_CRIT=$(grep -c "CRITICAL" "$LOG")
     ok "Logs analysés : $NB_ERR erreurs, $NB_CRIT critiques"
-    [ "$NB_CRIT" -gt 0 ] && echo "" && echo -e "${ROUGE}ATTENTION IL Y A $NB_CRIT ERREURS CRITIQUES${RESET}" || true
-    while [ "${i=0}" -le $NB_CRIT ]; do
-        echo "$(grep "CRITICAL" "$LOG" | sed -n "$i"p)"
+    if [ "$NB_CRIT" -gt 0 ]; then
+        echo ""
+        echo -e "${ROUGE}ATTENTION IL Y A $NB_CRIT ERREURS CRITIQUES${RESET}"
+    fi
+    while [ "${i=0}" -le "$NB_CRIT" ]; do
+        grep "CRITICAL" "$LOG" | sed -n "$i"p
         i=$((i + 1))
     done
 else
