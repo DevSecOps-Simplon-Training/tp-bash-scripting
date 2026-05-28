@@ -22,6 +22,9 @@ echo -e "${BOLD}${CYAN}   SETUP NEXACLOUD — $(date '+%d/%m/%Y %H:%M')${RESET}"
 echo -e "${BOLD}${CYAN}============================================${RESET}"
 echo ""
 
+# Chargement des variables du .env
+export $(grep -v '^#' .env | xargs)
+
 # ── 1. Vérification des prérequis ─────────────────────────────────────
 info "Vérification des prérequis..."
 
@@ -34,7 +37,7 @@ info "Vérification des prérequis..."
 # Stoppe le script si elle ne l'est pas
 verifier_commande() {
     for cmd in $@; do
-      if [ ! command -v "$cmd" &>/dev/null ]; then
+      if ! command -v "$cmd" &>/dev/null; then
           err "Prérequis : $cmd manquant"
       fi
     done
@@ -79,7 +82,6 @@ fi
 
 # ── 4. Analyse des logs ───────────────────────────────────────────────
 info "Analyse des logs..."
-LOG="ressources/server.log"
 
 # TODO: vérifiez que $LOG existe, puis :
 # - comptez les ERROR avec grep -c et stockez dans NB_ERR
@@ -97,7 +99,7 @@ NB_CRIT=$(grep -c "CRITICAL" $LOG)
 
 ok "$NB_ERR errors, $NB_CRIT criticals"
 
-if [ $NB_CRIT > 0 ]; then
+if [ $NB_CRIT -gt 0 ]; then
     echo -e "${ROUGE}!!! $NB_CRIT ERREURS CRITIQUES !!! ${RESET}"
     grep "CRITICAL" $LOG | while read -r error; do echo $error; done
 fi
