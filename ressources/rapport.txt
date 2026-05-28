@@ -1,0 +1,12 @@
+=== RAPPORT DE LOGS ===
+Nombre total de lignes : 
+Nombre d'erreurs : 
+Nombre de warnings : 
+Nombre de critiques : 
+Nombre total de lignes : 
+Nombre total de lignes : 22
+Nombre d'erreurs : 5
+Nombre d'erreurs : 5
+Nombre d'erreurs : 5
+Nombre de warnings : 4
+Nombre de critiques : 3

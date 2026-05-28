@@ -278,7 +278,7 @@ Un script Bash, c'est une suite de commandes enregistrées dans un fichier `.sh`
 ```bash
 # Déclarer une variable (pas d'espace autour du =)
 NOM="NexaCloud"
-PORT=5001
+PORT=5001nan
 
 # Utiliser une variable (toujours avec $)
 echo "Projet : $NOM"
@@ -353,7 +353,7 @@ Rendez le script exécutable et lancez-le :
 ```bash
 chmod +x mon-projet/src/info.sh
 ./mon-projet/src/info.sh
-```
+```cd
 
 ---
 
@@ -408,7 +408,7 @@ chmod +x mon-projet/src/check-logs.sh
 # Modifier check-logs.sh pour utiliser $1 comme chemin du fichier
 # Appel : ./check-logs.sh ressources/server.log
 
-# Vérifier que l'argument est bien fourni
+# Vérifier que l'argument ecdst bien fourni
 if [ -z "$1" ]; then
     echo "Usage : $0 <fichier.log>"
     exit 1
