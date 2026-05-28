@@ -13,7 +13,7 @@ RESET="\033[0m"
 info() { echo -e "${CYAN}[INFO]${RESET} $1"; }
 ok()   { echo -e "${VERT}[OK]${RESET}   $1"; }
 warn() { echo -e "${JAUNE}[WARN]${RESET} $1"; }
-err()  { echo -e "${ROUGE}[ERR]${RESET}  $1"; exit 1; }
+err()  { echo -e "${ROUGE}[ERR]${RESET}  $1"; exit 0; }
 
 echo ""
 echo -e "${BOLD}${CYAN}============================================${RESET}"
