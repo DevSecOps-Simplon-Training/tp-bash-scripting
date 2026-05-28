@@ -26,11 +26,9 @@ echo ""
 
 if [ -f .env ]; then
     export "$(grep -v '^#' .env | xargs)"
-else
-    PORT=5001
 fi
 
-echo "Port configuré : $PORT"
+echo "Port configuré : ${PORT:-3000}"
 echo ""
 
 # ── 1. Vérification des prérequis ─────────────────────────────────────
