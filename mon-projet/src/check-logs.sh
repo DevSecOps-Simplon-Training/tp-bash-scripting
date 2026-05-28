@@ -3,13 +3,18 @@
 
 SEUIL_ERREURS=3
 
+LOG_FILE="${1:-ressources/server.log}"
+
 if [ -z "$1" ]; then
-    echo "Usage : $0 <fichier.log>"
-    exit 1
+    echo "Pas de fichier de log spécifié,  utilisation du fichier $LOG_FILE"
 fi
 
-LOG_FILE=$1
-[ -f "$LOG_FILE" ] && echo "Fichier $1 trouvé" || echo "Fichier $1 absent"
+if [ -f "$LOG_FILE" ]; then
+    echo "Fichier $LOG_FILE trouvé"
+else
+    echo "Fichier $LOG_FILE absent" 
+    exit 1
+fi
 
 NB_ERREURS=$(grep -c "ERROR" "$LOG_FILE")
 NB_CRITIQUES=$(grep -c "CRITICAL" "$LOG_FILE")
