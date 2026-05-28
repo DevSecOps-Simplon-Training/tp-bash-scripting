@@ -3,8 +3,6 @@
 
 set -e
 
-export "$(grep -v '^#' .env | xargs)"
-
 VERT="\033[0;32m"
 ROUGE="\033[0;31m"
 CYAN="\033[0;36m"
@@ -25,6 +23,8 @@ echo -e "${BOLD}${CYAN}============================================${RESET}"
 echo -e "${BOLD}${CYAN}   SETUP NEXACLOUD — $(date '+%d/%m/%Y %H:%M')${RESET}"
 echo -e "${BOLD}${CYAN}============================================${RESET}"
 echo ""
+
+export "$(grep -v '^#' .env | xargs)"
 
 echo "Port configuré : $PORT"
 echo ""
