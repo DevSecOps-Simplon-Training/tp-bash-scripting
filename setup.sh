@@ -92,12 +92,12 @@ LOG="ressources/server.log"
 NB_ERR=$(grep -c "ERROR" "$LOG")
 NB_CRIT=$(grep -c "CRITICAL" "$LOG")
 ok "nombre d'erreurs: $NB_ERR \n    nombre d'errurs critiques: $NB_CRIT"
-if [ $NB_CRIT -gt 0 ]; then
+if [ "$NB_CRIT" -gt 0 ]; then
     echo "ALERTE CRITIQUE : $NB_CRIT incident(s) critique(s) détecté(s) !"
 	echo "incidents critiques sur les lignes :"
 	
 	COMPTEUR=0
-	while [ $COMPTEUR -le $NB_CRIT ]; do
+	while [ "$COMPTEUR" -le "$NB_CRIT" ]; do
 		grep -n -m"$COMPTEUR" "CRITICAL" ressources/server.log | cut -f1 -d: | tail -n1
 		COMPTEUR=$((COMPTEUR + 1))
 	done
@@ -121,5 +121,5 @@ echo "ENV=development" >> .env
 
 # Charger les variables du .env dans le script
 # (grep ignore les lignes commentées, xargs les exporte)
-export $(grep -v '^#' .env | xargs)
+export "$(grep -v '^#' .env | xargs)"
 echo "Port configuré : $PORT"
