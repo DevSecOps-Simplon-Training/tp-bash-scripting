@@ -1,0 +1,9 @@
+=== RAPPORT DE LOGS ===
+Total lignes :
+22 ressources/server.log
+Erreurs :
+5
+Warnings :
+4
+Critiques :
+3
