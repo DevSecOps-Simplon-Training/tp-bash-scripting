@@ -23,7 +23,7 @@ echo -e "${BOLD}${CYAN}============================================${RESET}"
 echo ""
 
 # Chargement des variables du .env
-export $("grep -v '^#' .env | xargs")
+export "$(grep -v '^#' .env | xargs)"
 
 # ── 1. Vérification des prérequis ─────────────────────────────────────
 info "Vérification des prérequis..."
