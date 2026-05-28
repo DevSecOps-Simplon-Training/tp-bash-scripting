@@ -89,7 +89,7 @@ jobs:
           }
 
           run_script "mon-projet/src/info.sh"
-          run_script "mon-projet/src/check-logs.sh" "ressources/server.log"
+          run_script "mon-projet/src/check-logs.sh"
           run_script "mon-projet/src/analyse-niveaux.sh"
           run_script "mon-projet/src/rapport.sh"
           run_script "mon-projet/src/couleurs.sh"
