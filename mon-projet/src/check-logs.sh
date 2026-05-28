@@ -3,7 +3,7 @@
 
 if [ -z "$1" ]; then
     echo "Usage : $0 <fichier.log>"
-    exit 1
+#    exit 1
 fi
 
 LOG_FILE="$1"
