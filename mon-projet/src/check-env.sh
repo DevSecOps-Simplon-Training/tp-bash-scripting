@@ -42,9 +42,7 @@ echo ""
 # TODO: appelez verifier_commande pour tester python3, node, npm et git
 # Exemple : verifier_commande "python3" "Python"
 
-verifier_commande "python3"
-verifier_commande "Python"
-
+verifier_commande "python3" "Python"
 echo ""
 
 # TODO: vérifiez que ces deux fichiers existent avec [ -f ]
