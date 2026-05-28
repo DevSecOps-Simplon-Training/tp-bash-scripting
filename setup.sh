@@ -1,5 +1,7 @@
 #!/bin/bash
 # setup.sh — Prépare le projet NexaCloud en une commande
+# Don't warn about unreachable commands in this file
+# shellcheck disable=SC2317  
 
 set -e
 
