@@ -27,12 +27,8 @@ function check_logs() {
 }
 
 main() {
-    if [ -z "$1" ]; then
-        echo "Usage : $0 <fichier.log>"
-        exit 1
-    fi
-
-    check_logs "$1"
+    local log_file="${1:-ressources/server.log}"
+    check_logs "$log_file"
 }
 
 main "$@"
