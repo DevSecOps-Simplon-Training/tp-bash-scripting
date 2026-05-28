@@ -1,13 +1,15 @@
 #!/bin/bash
 # check-logs.sh — Vérifie l'état des logs et alerte si nécessaire
 
-LOG_FILE="ressources/server.log"
 SEUIL_ERREURS=3
 
-if [ ! -f "$LOG_FILE" ]; then
-    echo "ERREUR : le fichier $LOG_FILE n'existe pas."
+if [ -z "$1" ]; then
+    echo "Usage : $0 <fichier.log>"
     exit 1
 fi
+
+LOG_FILE=$1
+[ -f "$LOG_FILE" ] && echo "Fichier $1 trouvé" || echo "Fichier $1 absent"
 
 NB_ERREURS=$(grep -c "ERROR" "$LOG_FILE")
 NB_CRITIQUES=$(grep -c "CRITICAL" "$LOG_FILE")
