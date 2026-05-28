@@ -53,3 +53,19 @@ ecrire_section "Erreurs" "$(grep 'ERROR' "$LOG_FILE")"
 
 echo ""
 echo "Rapport sauvegardé : $RAPPORT"
+
+echo ""
+# Traiter plusieurs fichiers de log en argument
+for FICHIER in "$@"; do
+    echo "=== Traitement de $FICHIER ==="
+    ERREURS=$(grep -c "ERROR" "$FICHIER")
+    echo "  $ERREURS erreur(s)"
+done
+# Appel : ./script.sh logs/app.log logs/backup.log
+
+# Boucle avec break et continue
+for i in $(seq 1 10); do
+    [ $i -eq 5 ] && continue   # sauter le 5
+    [ $i -eq 8 ] && break      # arrêter au 8
+    echo $i
+done
