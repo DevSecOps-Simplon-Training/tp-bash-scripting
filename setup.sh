@@ -79,7 +79,7 @@ if [ -f "$LOG" ]; then
     NB_ERR=$(grep -c "ERROR" "$LOG")
     NB_CRIT=$(grep -c "CRITICAL" "$LOG")
     ok "ERROR: $NB_ERR | CRITICAL: $NB_CRIT"
-    if [ $NB_CRIT -gt 0 ]; then
+    if [ "$NB_CRIT" -gt 0 ]; then
         echo -e "Incidents critiques détectés !"
         grep "CRITICAL" "$LOG" | while read -r ligne; do
             echo "  $ligne"
