@@ -21,11 +21,12 @@ compter_niveau() {
 ecrire_section() {
     local titre="$1"
     local contenu="$2"
-    echo "" >> "$RAPPORT"
-    echo "--- $titre ---" >> "$RAPPORT"
-    echo "$contenu" >> "$RAPPORT"
+   {
+    echo "" 
+    echo "--- $titre ---" 
+    echo "$contenu"
+    } >> "$RAPPORT"
 }
-
 # ── Script principal ───────────────────────────────────────────────
 
 if [ ! -f "$LOG_FILE" ]; then
