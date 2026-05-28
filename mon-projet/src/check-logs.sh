@@ -1,12 +1,14 @@
 #!/bin/bash
 # check-logs.sh — Vérifie l'état des logs et alerte si nécessaire
 
+LOG_FILE="${1:-ressources/server.log}"
+
 if [ -z "$1" ]; then
     echo "Usage : $0 <fichier.log>"
-    exit 1
+#    exit 1
 fi
 
-LOG_FILE="${1:-ressources/server.log}"
+
 SEUIL_ERREURS=3
 
 # [ -f "$LOG_FILE" ] && echo "Fichier trouvé" || echo "Fichier absent"
