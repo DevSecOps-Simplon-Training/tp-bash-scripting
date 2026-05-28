@@ -1,4 +1,3 @@
-
 #!/bin/bash
 # rapport.sh — Génère un rapport complet avec des fonctions
 
