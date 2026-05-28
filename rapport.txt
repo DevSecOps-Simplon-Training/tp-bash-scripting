@@ -1,0 +1,5 @@
+=== RAPPORT DE LOGS ===
+nombre total de lignes
+nombre d'erreurs
+nombre de warnings
+nombre de critiques
