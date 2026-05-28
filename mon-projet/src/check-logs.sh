@@ -21,11 +21,12 @@ echo "  CRITICAL : $NB_CRITIQUES"
 echo "==========================="
 
 # Vérifier le seuil d'erreurs
-if [ $NB_CRITIQUES" -gt 0 ]; then
+if [ "$NB_CRITIQUES" -gt 0 ]; then
     echo "ALERTE CRITIQUE : $NB_CRITIQUES incident(s) critique(s) détecté(s) !"
 elif [ "$NB_ERREURS" -gt "$SEUIL_ERREURS" ]; then
     echo "ATTENTION : $NB_ERREURS erreurs détectées (seuil : $SEUIL_ERREURS)"
 else
     echo "OK : les logs sont dans les normes."
 fi
+
 
