@@ -6,7 +6,7 @@ SEUIL_ERREURS=3
 
 if [ -z "$1" ]; then
     echo "Usage : $0 <fichier.log>"
-    exit 1
+    exit 0
 fi
 
 if [ ! -f "$LOG_FILE" ]; then
