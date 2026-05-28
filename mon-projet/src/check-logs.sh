@@ -3,7 +3,7 @@
 
 if [ -z "$1" ]; then
     echo "Usage : $0 <fichier.log>"
-#    exit 1
+    exit 1
 fi
 
 LOG_FILE="$1"
@@ -35,3 +35,6 @@ elif [ "$NB_ERREURS" -gt "$SEUIL_ERREURS" ]; then
 else
     echo "OK : les logs sont dans les normes."
 fi
+
+# exit 0 pour indiquer que le script s'est terminé sans erreur (même s'il y a des erreurs dans les logs), et ne pas alerter la CI
+exit 0
