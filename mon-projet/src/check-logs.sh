@@ -5,7 +5,7 @@ LOG_FILE="${1:-ressources/server.log}"
 SEUIL_ERREURS=3
 
 # Vérifier que l'argument est bien fourni
-if [ -z "$1" ]; then
+if [ -z "$LOG_FILE" ]; then
     echo "Usage : $0 <fichier.log>"
     exit 1
 fi
