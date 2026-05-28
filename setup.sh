@@ -3,7 +3,8 @@
 
 set -e
 
-export "$(grep -v '^#' .env.example | xargs)"
+# shellcheck disable=SC2046
+export $(grep -v '^#' .env.example | xargs)
 
 VERT="\033[0;32m"
 ROUGE="\033[0;31m"
