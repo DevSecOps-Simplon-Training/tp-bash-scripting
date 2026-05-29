@@ -1,3 +1,4 @@
+#!/bin/bash
 RESOURCE_GROUP="ntesseyreRG"
 VM_NAME="vm-nexacloud-tp"
 VM_IMAGE="Ubuntu2204"

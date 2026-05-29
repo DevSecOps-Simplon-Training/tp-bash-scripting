@@ -1,3 +1,4 @@
+#!/bin/bash
 KEYVAULT_NAME="kv-nexacloud-$RANDOM"
 
 # Créer le Key Vault
