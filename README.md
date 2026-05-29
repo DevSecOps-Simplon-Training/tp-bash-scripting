@@ -872,7 +872,7 @@ az account set --subscription "Nom ou ID de l'abonnement"
 
 ```bash
 # Variables réutilisables
-RESOURCE_GROUP="rg-nexacloud-tp"
+RESOURCE_GROUP="ntesseyreRG"
 LOCATION="francecentral"
 STORAGE_ACCOUNT="stnexacloud$RANDOM"   # Nom unique obligatoire
 
@@ -900,7 +900,7 @@ Créez `mon-projet/src/azure-storage.sh` :
 
 set -e
 
-RESOURCE_GROUP="rg-nexacloud-tp"
+RESOURCE_GROUP="ntesseyreRG"
 LOCATION="francecentral"
 STORAGE_ACCOUNT="stnexacloud$RANDOM"
 CONTAINER="logs"
