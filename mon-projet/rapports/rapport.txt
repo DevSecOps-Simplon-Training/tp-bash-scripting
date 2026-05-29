@@ -1,0 +1,9 @@
+=== LOGS REPORTS ===
+ 
+Number of lines : 22
+ 
+Errors : 5
+ 
+Warnings : 4
+ 
+Critical : 3
