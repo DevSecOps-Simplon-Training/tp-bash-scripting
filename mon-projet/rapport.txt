@@ -1,0 +1,5 @@
+=== RAPPORT DE LOGS ===
+      22 lignes au total
+       5 ERROR
+       4 WARNING
+       3 CRITICAL
