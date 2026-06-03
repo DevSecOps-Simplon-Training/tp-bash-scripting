@@ -1,6 +1,6 @@
 #!/bin/bash
 RESOURCE_GROUP="asigurRG"
-VM_NAME="vm-nexacloud-tp"
+VM_NAME="ubuntuservmc"
 VM_IMAGE="Ubuntu2204"
 VM_SIZE="Standard_D2s_v3"
 
