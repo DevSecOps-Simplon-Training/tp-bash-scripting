@@ -28,4 +28,4 @@ IP=$(az vm show \
 echo "IP de la VM : $IP"
 
 # Se connecter en SSH
-ssh -i ~/.ssh/id_ed25519 malikcherfi@$IP
+ssh -i ~/.ssh/id_ed25519 malikcherfi@"$IP"
